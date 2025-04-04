@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
 project(Clipper2 VERSION 1.5.2 LANGUAGES C CXX)
 
+find_package(GLM REQUIRED)
+if(NOT GLM_FOUND)
+        message(Error "GLM not found")
+endif(NOT GLM_FOUND)
+link_libraries(glm::glm)
+
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 if(NOT DEFINED CMAKE_CXX_STANDARD OR CMAKE_CXX_STANDARD LESS 17)
     set(CMAKE_CXX_STANDARD 17)

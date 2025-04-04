@@ -113,7 +113,7 @@ namespace Clipper2Lib
 
   // Point ------------------------------------------------------------------------
 
-  template <typename T>
+  /*template <typename T>
   struct Point {
     T x;
     T y;
@@ -237,7 +237,14 @@ namespace Clipper2Lib
 
     inline void Negate() { x = -x; y = -y; }
 
-  };
+  };*/
+  template <typename T>
+  using Point = 
+  #ifdef USINGZ
+      glm::vec<3, T, glm::defaultp>;
+  #else
+      glm::vec<2, T, glm::defaultp>;
+  #endif
 
   //nb: using 'using' here (instead of typedef) as they can be used in templates
   using Point64 = Point<int64_t>;

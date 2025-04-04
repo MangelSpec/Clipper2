@@ -281,7 +281,7 @@ void ClipperOffset::DoRound(const Path64& path, size_t j, size_t k, double angle
 	Point64 pt = path[j];
 	PointD offsetVec = PointD(norms[k].x * group_delta_, norms[k].y * group_delta_);
 
-	if (j == k) offsetVec.Negate();
+	if (j == k) offsetVec = -offsetVec; // offsetVec.Negate();
 #ifdef USINGZ
     path_out.emplace_back(pt.x + offsetVec.x, pt.y + offsetVec.y, pt.z);
 #else
